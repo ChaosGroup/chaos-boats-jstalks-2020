@@ -20,22 +20,22 @@ const opsticalInRight = opsticalIn(right);
 const noOpsctical = opsticalAt(0);
 
 const fire = target => {
-	const change = target.range >= 80 ? randIntIncl(-1, 1) : 0;
+	const change = target.range >= 85 ? randIntIncl(-1, 1) : 0;
 	return toClock(target.bearingSector + change);
 };
 
 const fireSector = target => (target.range <= 120 ? fire(target) : 0);
 
 const direction = {
-	ahead: randIntInclFunc(-1, 1),
-	left: randIntInclFunc(-3, -1),
-	right: randIntInclFunc(1, 3)
+	ahead: randIntInclFunc(-2, 2),
+	left: randIntInclFunc(-2, -1),
+	right: randIntInclFunc(1, 2)
 };
 
-let next = [];
+let next = null;
 
 const executeAndRemeber = dir => {
-    next = [dir, dir];
+    next = dir;
     return direction[dir]();
 }
 
@@ -49,8 +49,9 @@ const simpleRudder = ship =>
         : direction.ahead();
         
 const rudder = ship => {
-    if(next.length > 0) {
-        const dir = next.pop();
+    if(next) {
+        const dir = next;
+        next = null;
         return direction[dir]();
     }
     return simpleRudder(ship);
@@ -59,7 +60,7 @@ const rudder = ship => {
 onGameMessage(({ ownShip, targets }) => {
 	const target = targets.sort((a, b) => a.range - b.range)[0];
 	return {
-		speed: randIntIncl(3, 6),
+		speed: randIntIncl(4, 6),
 		rudder: rudder(ownShip),
 		fireSector: fireSector(target),
 	};
