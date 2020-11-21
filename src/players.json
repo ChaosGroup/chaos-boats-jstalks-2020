@@ -19,7 +19,7 @@
 		"name": "Davy Jones",
 		"worker": "players/DavyJones.js"
 	},
-		"BlackPearl": {
+	"BlackPearl": {
 		"name": "Black Pearl",
 		"worker": "players/Radotooo.js"
 	}
