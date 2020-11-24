@@ -26,5 +26,9 @@
     "DeadlyJoe": {
         "name": "Deadly Joe",
         "worker": "players/NoHomey.js"
+    },
+    "JiggleJohn": {
+        "name": "JiggleJohn",
+        "worker": "players/JiggleJohn_LiuboNenov.js"
     }
 }
