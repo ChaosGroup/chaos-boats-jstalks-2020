@@ -1,3 +1,5 @@
+## All the fun is happening now at [chaos-boats](https://github.com/ChaosGroup/chaos-boats) repo!
+
 <div align="center">
 
 ![screenshot](images/chaos_logo.png)
